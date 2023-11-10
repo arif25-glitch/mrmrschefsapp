@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from 'react';
+import { Header } from './homepage/Header';
 
 function App() {
   const [data, setData] = useState([])
@@ -12,30 +13,28 @@ function App() {
       setData(data);
     })
   }, []);
+
   return (
     <>
-      <div className='App'>
-        <h1>test this react app</h1>
-        <h1>Hello {data.username}</h1>
-      </div>
+      <Header/>
+        <h1>Hello { data.username }</h1>
     </>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit this app
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
   );
 }
 
-export default App;
+const Test = (props) => {
+  const shout = (a) => {
+    alert(`Your shout at me ${a}`);
+  }
+
+  return (
+    <>
+      <h1 style={{backgroundColor: "lightblue"}}>感じだから</h1>
+      <p>Hi { props.name }</p>
+      <button onClick={() => shout('baka')}>Take this</button>
+      <App/>
+    </>
+  )
+}
+
+export { App, Test };
